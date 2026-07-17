@@ -1,0 +1,7 @@
+name = "mrbin-website"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding      = "DB"
+database_name = "mrbin-bookings"
+database_id   = "your-d1-database-id-here"  # replace with your own D1 database ID
