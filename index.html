@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -208,44 +208,48 @@
   </section>
 
   <!-- REVIEWS -->
-  <section class="section-pad" aria-labelledby="reviews-title">
+  <!--
+    Cards are rendered from the REVIEWS array in reviews.js. To add a review,
+    append an entry to that array — no changes needed here.
+    Structure is viewport > track > cards so slide/swipe navigation can be
+    added later by translating .reviews-track. No such logic exists yet.
+  -->
+  <section id="reviews" class="section-pad" aria-labelledby="reviews-title">
     <div class="container">
       <div class="section-hd">
         <div class="section-label">Reviews</div>
         <h2 class="section-title" id="reviews-title">What homeowners are saying</h2>
       </div>
 
-      <!--
-        To add a new review: copy one <article class="review-card"> block below
-        and fill in the stars, text, name, and source. The grid handles the
-        layout automatically — no CSS changes needed as reviews are added.
-      -->
-      <div class="reviews-grid">
-
-        <article class="review-card">
-          <div class="review-stars" aria-label="Rated 5 out of 5">
-            <span class="stars" aria-hidden="true">★★★★★</span>
-          </div>
-          <blockquote class="review-text">Called the team to confirm my appointment and they showed up promptly even when I had to push it to another day. These are hardworking young men and they did a great job in cleaning our bins! I would definitely recommend them and call them in the future!</blockquote>
-          <div class="review-photos">
-            <figure class="review-photo">
-              <figcaption class="review-photo-label">Before</figcaption>
-              <img src="review-ken-before.jpg" width="881" height="1000" loading="lazy" decoding="async"
-                   alt="Inside of Ken's trash bin before cleaning, with caked-on grime and stuck debris at the bottom">
-            </figure>
-            <figure class="review-photo">
-              <figcaption class="review-photo-label">After</figcaption>
-              <img src="review-ken-after.jpg" width="750" height="1000" loading="lazy" decoding="async"
-                   alt="The same bin after cleaning, washed down to bare plastic with no debris left">
-            </figure>
-          </div>
-          <div class="review-meta">
-            <span class="review-name">Ken</span>
-            <span class="review-source">Google Review</span>
-          </div>
-        </article>
-
+      <div class="reviews-viewport">
+        <div class="reviews-track" id="reviewsTrack"></div>
       </div>
+
+      <noscript>
+        <!-- Static fallback. Keep in sync with the first entry of REVIEWS in reviews.js. -->
+        <div class="reviews-viewport">
+          <div class="reviews-track">
+            <article class="review-card">
+              <div class="review-stars" aria-label="Rated 5 out of 5"><span class="stars">★★★★★</span></div>
+              <blockquote class="review-text">Called the team to confirm my appointment and they showed up promptly even when I had to push it to another day. These are hardworking young men and they did a great job in cleaning our bins! I would definitely recommend them and call them in the future!</blockquote>
+              <div class="review-photos">
+                <figure class="review-photo">
+                  <figcaption class="review-photo-label">Before</figcaption>
+                  <img src="review-ken-before.jpg" width="881" height="1000" alt="Inside of Ken's trash bin before cleaning, with caked-on grime and stuck debris at the bottom">
+                </figure>
+                <figure class="review-photo">
+                  <figcaption class="review-photo-label">After</figcaption>
+                  <img src="review-ken-after.jpg" width="750" height="1000" alt="The same bin after cleaning, washed down to bare plastic with no debris left">
+                </figure>
+              </div>
+              <div class="review-meta">
+                <span class="review-name">Ken</span>
+                <span class="review-source">Google Review</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </noscript>
     </div>
   </section>
 
@@ -416,5 +420,6 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="reviews.js?v=2"></script>
 </body>
 </html>
